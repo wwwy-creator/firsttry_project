@@ -27,7 +27,9 @@ cc.Class({
             // 然后销毁当前节点
             this.node.destroy();
         }
-        else {
+        else { 
+            // 结束音乐
+            this.game2.playOverSound();
            this.game2.createOption();
         }
     },

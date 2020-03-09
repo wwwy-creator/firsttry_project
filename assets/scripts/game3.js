@@ -24,6 +24,11 @@ cc.Class({
             default: null,
             type: cc.AudioClip
         },
+        //结束音乐
+        overAudio: {
+            default: null,
+            type: cc.AudioClip
+        },
         option: {
             default: [],
             type: [cc.Prefab]
@@ -39,6 +44,7 @@ cc.Class({
     },
 
     createOption: function () {
+        this.rabbit.getComponent("rabbit3").onDestroy();
         this.rabbit.runAction(this.setDown());
         //计时
         this.scheduleOnce(function () {
@@ -56,14 +62,20 @@ cc.Class({
     },
 
     setDown: function () {
+        var Pos = this.rabbit.getPosition();
         // 下落
-        var dropDown = cc.moveBy(2.5, cc.v2(0, -500)).easing(cc.easeCubicActionOut());
+        var dropDown = cc.moveTo(2.5, cc.v2(Pos.x, -500)).easing(cc.easeCubicActionOut());
         return dropDown;
     },
 
     playScoreSound: function () {
         // 调用声音引擎播放声音
         cc.audioEngine.playEffect(this.scoreAudio, false);
+    },
+
+    playOverSound: function () {
+        // 调用声音引擎播放声音
+        cc.audioEngine.playEffect(this.overAudio, false);
     },
 
     createStuff: function () {

@@ -217,7 +217,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 328.62,
+      "width": 336.38,
       "height": 363
     },
     "_anchorPoint": {
@@ -268,8 +268,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "小兔子驾着萝卜\n起飞，相当厉害！\n帮助小兔子移动\n位置来收集胡萝\n卜，并且躲避怪\n物。键A左，键D\n右，键H上，键K下。",
-    "_N$string": "小兔子驾着萝卜\n起飞，相当厉害！\n帮助小兔子移动\n位置来收集胡萝\n卜，并且躲避怪\n物。键A左，键D\n右，键H上，键K下。",
+    "_string": "小兔子驾着萝卜\n起飞，相当厉害！\n帮助小兔子移动\n位置来收集胡萝\n卜，并且躲避怪\n物。键A左，键D\n右，键W上，键S下。",
+    "_N$string": "小兔子驾着萝卜\n起飞，相当厉害！\n帮助小兔子移动\n位置来收集胡萝\n卜，并且躲避怪\n物。键A左，键D\n右，键W上，键S下。",
     "_fontSize": 35,
     "_lineHeight": 50,
     "_enableWrapText": true,

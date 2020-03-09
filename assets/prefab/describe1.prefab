@@ -217,8 +217,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 280,
-      "height": 363
+      "width": 315,
+      "height": 263
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -268,8 +268,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "帮助小兔子收集\n胡萝卜，并且躲\n避小怪物的攻击。\n你可以按下键A\n左移，键D右移，\n需要跳起的话，\n按下键S。",
-    "_N$string": "帮助小兔子收集\n胡萝卜，并且躲\n避小怪物的攻击。\n你可以按下键A\n左移，键D右移，\n需要跳起的话，\n按下键S。",
+    "_string": "帮助小兔子收集\n胡萝卜，并且躲\n避小怪物的攻击。\n你可以点击小兔子，\n让它跳过怪物。",
+    "_N$string": "帮助小兔子收集\n胡萝卜，并且躲\n避小怪物的攻击。\n你可以点击小兔子，\n让它跳过怪物。",
     "_fontSize": 35,
     "_lineHeight": 50,
     "_enableWrapText": true,

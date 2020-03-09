@@ -44,49 +44,34 @@ cc.Class({
         }
     },
 
-    lrAction: function (toward) {
-        // 添加跳跃音乐
-        var callback = cc.callFunc(this.playJumpSound, this);
-        if (toward == "left") {
-            // 左移
-            var toLeft = cc.moveBy(this.toDuration, cc.v2(-this.toDistance, 0)).easing(cc.easeCubicActionOut());
-            return cc.sequence(callback, toLeft);
-        }
-        else {
-            // 右移
-            var toRight = cc.moveBy(this.toDuration, cc.v2(this.toDistance, 0)).easing(cc.easeCubicActionOut());
-            return cc.sequence(callback, toRight);
-        }
-    },
-
     onKeyDown(event) {
         var keyName;
         //限制兔子不跑出视界
         var Pos = this.node.getPosition();
         switch (event.keyCode) {
             case cc.macro.KEY.a: {
-                if (Pos.x > -350) {
+                if (Pos.x > -300) {
                     keyName = "left";
                     this.node.runAction(this.setDirection(keyName));
                 }
                 break;
             };
             case cc.macro.KEY.d: {
-                if (Pos.x < 440) {
+                if (Pos.x < 400) {
                     keyName = "right";
                     this.node.runAction(this.setDirection(keyName));
                 }
                 break;
             }; 
-            case cc.macro.KEY.h: {
-                if (Pos.y < 220) {
+            case cc.macro.KEY.w: {
+                if (Pos.y < 200) {
                     keyName = "up";
                     this.node.runAction(this.setDirection(keyName));
                 }
                 break;
             };
-            case cc.macro.KEY.k: {
-                if (Pos.y > -180) {
+            case cc.macro.KEY.s: {
+                if (Pos.y > -100) {
                     keyName = "down";
                     this.node.runAction(this.setDirection(keyName));
                 }
@@ -109,5 +94,4 @@ cc.Class({
 
     },
 
-    // update (dt) {},
 });

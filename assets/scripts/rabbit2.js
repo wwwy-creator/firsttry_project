@@ -18,6 +18,7 @@ cc.Class({
             type: cc.AudioClip
         },
     },
+
     playJumpSound: function () {
         // 调用声音引擎播放声音
         cc.audioEngine.playEffect(this.jumpAudio, false);
@@ -32,9 +33,8 @@ cc.Class({
         var jumpDown = cc.moveBy(this.jumpDuration, cc.v2(0, -this.jumpHeight)).easing(cc.easeCubicActionIn());
         // 不断重复
         return cc.repeatForever(cc.sequence(callback, jumpUp, jumpDown));
-        this.timer = 0;
     },
-    /**/
+
     setOneJumpAction: function () {
         // 添加跳跃音乐
         var callback = cc.callFunc(this.playJumpSound, this);
@@ -42,61 +42,50 @@ cc.Class({
         var jumpUp = cc.moveBy(this.duration, cc.v2(0, this.height)).easing(cc.easeCubicActionOut());
         // 下落
         var jumpDown = cc.moveBy(this.duration, cc.v2(0, -this.height)).easing(cc.easeCubicActionOut());
+        this.timer = 0;
         //连贯
         return cc.sequence(callback, jumpUp, jumpDown);
-        this.timer = 0;
     },
 
-//这里存在问题，连续按下s键后，小兔子跳跃出错
-    onKeyDown (event) {
-        // set a flag when key pressed
-        switch (event.keyCode) {
-            case cc.macro.KEY.s: {
-                //停掉原先的动作
+    clickJump (event) {
+        //防止连续点击出现连跳现象
+        if (this.flag == false && this.timer < this.duration * this.mutiplynum - this.timer) {
+            this.node.pauseSystemEvents();
+            this.scheduleOnce(function () {
+                this.node.resumeSystemEvents();
+            }, (this.duration * this.mutiplynum - this.timer));
+        }
+        else {
+            this.flag = false;
+            //停掉原先的动作
+            this.node.stopAllActions();
+            this.node.setPosition(-340, -230);
+            //开始新动作
+            this.node.runAction(this.setOneJumpAction());
+            //键盘released，等待onKeyDown动作结束后，恢复原先动作
+            this.scheduleOnce(function () {
                 this.node.stopAllActions();
                 this.node.setPosition(-340, -230);
-                //开始新动作
-                this.node.runAction(this.setOneJumpAction());
-                break;
-            };
+                this.node.runAction(this.setJumpAction());
+                this.flag = true;
+            }, (this.duration * this.mutiplynum - this.timer));
         }
-    },
-    
-    onKeyUp (event) {
-        // unset a flag when key released
-        switch (event.keyCode) {
-            case cc.macro.KEY.s: {
-                //键盘released，等待onKeyDown动作结束后，恢复原先动作
-                this.scheduleOnce(function () {
-                    this.node.stopAllActions();
-                    this.node.setPosition(-340, -230);
-                    this.node.runAction(this.setJumpAction());
-                }, (this.duration * this.mutiplynum - this.timer));
-                break;
-            };
-        };
     },
 
     onLoad: function () {
         //定时器
         this.timer = 0;
+        this.flag = true;
 
         // 初始化跳跃动作
         this.node.runAction(this.setJumpAction());
 
         // 初始化键盘输入监听
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+        this.node.on('mousedown', this.clickJump , this);
     },
 
-    onDestroy () {
-       // 取消键盘输入监听
-        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-        cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
-    },
-
-    start () {
-
-    },
+    onDestroy() {
+        this.node.off('mousedown', this.clickJump, this);
+    }
 
 });

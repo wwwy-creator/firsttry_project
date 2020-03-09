@@ -16,7 +16,7 @@ cc.Class({
         this.toDescribe.book2.getComponent(cc.Button).interactable = true;
         //Ïú»Ù½Úµã
         this.node.destroy();
-        this.toDescribe.node.parent.opacity = 255;//
+        this.toDescribe.node.parent.opacity = 255;
     },
 
     onLoad: function () {

@@ -5,6 +5,7 @@ cc.Class({
 
     },
     toHome: function () {
+        cc.director.resume();
         cc.director.loadScene("game1");
     },
 

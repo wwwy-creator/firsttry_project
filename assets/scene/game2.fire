@@ -62,7 +62,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Hang",
+    "_name": "hang",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -257,7 +257,7 @@
       "array": [
         0,
         0,
-        233.18177795410156,
+        231.32203674316406,
         0,
         0,
         0,
@@ -1629,6 +1629,9 @@
     "distance": 100,
     "scoreAudio": {
       "__uuid__": "a4079c85-758e-481b-9442-3afd9f1bbac4"
+    },
+    "overAudio": {
+      "__uuid__": "b88153a5-d357-474f-82a2-de02c186581d"
     },
     "option": [
       {

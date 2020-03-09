@@ -27,6 +27,8 @@ cc.Class({
             this.game3.gainScore();
         }
         else {
+            // Ω· ¯“Ù¿÷
+            this.game3.playOverSound();
             this.game3.createOption();
         }
     },

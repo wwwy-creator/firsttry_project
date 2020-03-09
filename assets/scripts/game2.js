@@ -26,6 +26,12 @@ cc.Class({
             default: null,
             type: cc.AudioClip
         },
+        //结束音乐
+        overAudio: {
+            default: null,
+            type: cc.AudioClip
+        },
+        //两个选择，restart和home
         option: {
             default: [],
             type:[cc.Prefab]
@@ -39,8 +45,9 @@ cc.Class({
             type: cc.Node
         },
     },
-    /*        */
+
     createOption: function () {
+        this.rabbit.getComponent("rabbit2").onDestroy();
         this.rabbit.runAction(this.setDown());
         //计时
         this.scheduleOnce(function () {
@@ -58,8 +65,9 @@ cc.Class({
     },
 
     setDown: function () {
+        var Pos = this.rabbit.getPosition();
         // 下落
-        var jumpDown = cc.moveBy(1, cc.v2(0, -200)).easing(cc.easeCubicActionOut());
+        var jumpDown = cc.moveTo(2, cc.v2(Pos.x, -500)).easing(cc.easeCubicActionOut());
         return jumpDown;
     },
 
@@ -70,7 +78,7 @@ cc.Class({
         // 将新增的节点添加到 Canvas 节点下面
         this.node.addChild(newStuff);
         // 在lauch组件上暂存game2对象的引用
-        newStuff.getComponent('lauch').game2 = this;
+        newStuff.getComponent('lauch2').game2 = this;
         this.timer = 0;
     },
 
@@ -83,6 +91,11 @@ cc.Class({
     playScoreSound: function () {
         // 调用声音引擎播放声音
         cc.audioEngine.playEffect(this.scoreAudio, false);
+    },
+
+    playOverSound: function () {
+        // 调用声音引擎播放声音
+        cc.audioEngine.playEffect(this.overAudio, false);
     },
 
     onLoad: function () {
