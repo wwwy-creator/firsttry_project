@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "gate",
+    "texture": "0e3aa4db-906d-4d19-b9f9-6e9083050dcb",
+    "atlas": "",
+    "rect": [
+      671,
+      110,
+      601,
+      798
+    ],
+    "offset": [
+      11.5,
+      31
+    ],
+    "originalSize": [
+      1920,
+      1080
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
